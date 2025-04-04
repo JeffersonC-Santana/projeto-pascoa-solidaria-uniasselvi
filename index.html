@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Páscoa Solidária 2025 - Projeto de Extensão</title>
+    <style>
+        :root {
+            --primary-color: #E91E63;
+            --secondary-color: #C2185B;
+            --accent-color: #FF9800;
+            --light-color: #F8BBD0;
+            --dark-color: #880E4F;
+            --text-color: #333;
+            --light-text: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .hero {
+            height: 100vh;
+            background: url('img/Pascoa\ solidaria.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text);
+            padding-top: 80px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--light-text);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #F57C00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .donation-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .donation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .donation-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .donation-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .team {
+            background: #f9f9f9;
+        }
+        
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .member {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 5px solid var(--light-color);
+        }
+        
+        .collection-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .point {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .point h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .point p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery {
+            background: #f9f9f9;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: var(--light-text);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .social-links li {
+            margin: 0 1rem;
+        }
+        
+        .social-links a {
+            color: var(--light-text);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Páscoa <span>Solidária</span></div>
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#doacoes">Doações</a></li>
+                    <li><a href="#quem-somos">Quem Somos</a></li>
+                    <li><a href="#pontos-coleta">Pontos de Coleta</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Páscoa Solidária 2025</h1>
+            <p>Um projeto de extensão universitária para levar alegria e esperança às famílias carentes nesta data especial.</p>
+            <a href="https://wa.me/5547989257886" target="_blank" class="btn">Quero Ajudar</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre o Projeto</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>A Páscoa Solidária é um projeto de extensão universitária que busca levar apoio a ONG Amiguinho Feliz, localizada no bairro Escola Agrícola. Por meio da arrecadação de alimentos, produtos de higiene, roupas em bom estado, brinquedos para crianças e outros itens essenciais, queremos transformar a Páscoa em um momento de renovação e esperança para quem mais precisa.
+                    <br><br>Em 2025, contamos com a dedicação de 17 acadêmicos e o apoio fundamental de parceiros da comunidade, unindo forças para fazer a diferença. <br>
+                    
+                    O Centro de Educação Amiguinho Feliz é uma entidade filantrópica sem fins lucrativos que atende 172 crianças de 0 a 10 anos, oferecendo alimentação (4 refeições diárias), cuidados de higiene, atividades lúdicas e pedagógicas para desenvolvimento motor, cognitivo e social, além de aulas devocionais com histórias bíblicas.
+
+                    Fundado em 1982, a instituição já atendeu mais de 2.500 crianças em Blumenau, focando em famílias de baixa renda ou em situação de risco.
+
+                    A entidade não cobra valor fixo das famílias, dependendo de doações espontâneas, parcerias com órgãos públicos (que não cobrem todos os custos) e ajuda da comunidade. Para continuar seu trabalho, o Amiguinho Feliz busca apoio financeiro e doações, garantindo educação, amor e alimentação para as crianças necessitadas.
+                    
+                    Acreditamos que pequenos gestos podem gerar grandes transformações e é com esse espírito que desejamos compartilhar calor humano, solidariedade e um futuro mais justo.
+                </h3>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section id="doacoes" class="donations">
+        <div class="container">
+            <h2 class="section-title">Como Doar</h2>
+            <div class="donation-options">
+                <div class="donation-card">
+                    <i class="fas fa-shopping-basket"></i>
+                    <h3>Alimentos não Perecíveis</h3>
+                    <p>Doação de alimentos não perecíveis que compõem uma cesta básica completa para uma família.</p>
+                    <a href="#" class="btn">Doar Alimentos</a>
+                </div>
+                <div class="donation-card">
+                    <i class="fa-solid fa-shirt"></i>
+                    <h3>Roupas em Bom Estado</h3>
+                    <p>Estamos arrecadando roupas em bom estado de todos os tamanhos (infantil) para doação.</p>
+                    <a href="#" class="btn">Doar Roupas</a>
+                </div>
+                <div class="donation-card">
+                    <i class="fa-solid fa-soap"></i>
+                    <h3>Produtos de Higiene</h3>
+                    <p>Doação de itens de higiene pessoal:  Shampoo, Creme dental, Escova de dentes, Papel higiênico,  Lenços umedecidos, etc...</p>
+                    <a href="#" class="btn">Doar Produtos de Higiene</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quem-somos" class="team">
+        <div class="container">
+            <h2 class="section-title">Quem Somos</h2>
+            <div class="team-members">
+                <div class="member">
+                    <img src="img/Gioava Carina Till Morais.jpeg" alt="Líder do Projeto">
+                    <h3>Prof. Giovana Carina</h3>
+                    <h4>Líder do Projeto</h4>
+                    <p>Pedagogia</p>
+                </div>
+                <div class="member">
+                    <img src="img/Alessandra da Cunha.jpeg" alt="">
+                    <h3>Alessandra da Cunha</h3>
+                    <p>Serviço Social</p>
+                </div>
+                <div class="member">
+                    <img src="img/Jose Enio Rengel.jpeg" alt="Representante Discente">
+                    <h3>Jose Enio Rengel</h3>
+                    <p>Contabilidade</p>
+                </div>
+                <div class="member">
+                    <img src="img/Jefferson Santana.jpeg" alt="Voluntário Destaque">
+                    <h3>Jefferson Santana</h3>
+                    <p>2º Licenciatura em Educação Especial</p>
+                </div>
+                <div class="member">
+                    <img src="img/Graziéle Oliveira .jpeg" alt="Voluntário Destaque">
+                    <h3>Graziéle Oliveira</h3>
+                    <p>Educação física</p>
+                </div>
+                <div class="member">
+                    <img src="img/Pollyana Roberta.jpeg" alt="Coordenadora do Projeto">
+                    <h3>Pollyana Roberta Brandão</h3>
+                    <p>Nutrição</p>
+                </div>
+                <div class="member">
+                    <img src="img/Norma santos de Souza.jpeg" alt="Representante Discente">
+                    <h3>Norma santos de Souza</h3>
+                    <p>Gastronomia</p>
+                </div>
+                <div class="member">
+                    <img src="img/Rose Meire Camargo de Lima.jpeg" alt="Voluntário Destaque">
+                    <h3>Rose Meire Camargo de Lima</h3>
+                    <p>?</p>
+                </div>
+                <div class="member">
+                    <img src="img/Amabile Priscila Marcos.jpg" alt="Voluntário Destaque">
+                    <h3>Amabile Priscila Marcos</h3>
+                    <p>Processos Gerenciais</p>
+                </div>
+                <div class="member">
+                    <img src="img/Paulo Oliveira Alves.jpeg" alt="Coordenadora do Projeto">
+                    <h3>Paulo Oliveira Alves</h3>
+                    <p>Segurança Pública</p>
+                </div>
+                <div class="member">
+                    <img src="img/Sandra Chegatti.jpeg" alt="Vice-Coordenador">
+                    <h3>Sandra Chegatti</h3>
+                    <p>Gastronomia</p>
+                </div>
+                <div class="member">
+                    <img src="img/Márcio Chegatti.jpeg" alt="Representante Discente">
+                    <h3>Márcio Chegatti</h3>
+                    <p>Negócios Imobiliários</p>
+                </div>
+                <div class="member">
+                    <img src="img/Gleiciane Borges.jpeg" alt="Coordenadora do Projeto">
+                    <h3>Gleiciane Borgesa</h3>
+                    <p>Gestão Comercial</p>
+                </div>
+                <div class="member">
+                    <img src="img/Eduarda Rodrigues Paiva .jpeg" alt="Vice-Coordenador">
+                    <h3>Eduarda Rodrigues Paiva</h3>
+                    <p>Pedagogia</p>
+                </div>
+                <div class="member">
+                    <img src="img/avatar.jpg" alt="Vice-Coordenador">
+                    <h3>Gabriele Maia Mariano</h3>
+                    <p>Graduação</p>
+                </div>
+                <div class="member">
+                    <img src="img/avatar.jpg" alt="Vice-Coordenador">
+                    <h3>Thainara da Silva</h3>
+                    <p>Graduação</p>
+                </div>
+                <div class="member">
+                    <img src="img/avatar.jpg" alt="Vice-Coordenador">
+                    <h3>Thaise Alexandre</h3>
+                    <p>Graduação</p>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <section id="pontos-coleta" class="collection">
+        <div class="container">
+            <h2 class="section-title">Pontos de Coleta</h2>
+            <div class="collection-points">
+                <div class="point"> 
+                   <h3> <i class="fa-solid fa-location-dot"></i>Kip Baby</h3>
+                    <p>Rua Amazonas, 840 - Garcia</p>
+                    <p>Segunda a sexta, 9h às 18:30h</p>
+                    <p>Sábado, 9h às 13:00h</p>
+                </div>
+                <div class="point">
+                    <h3> <i class="fa-solid fa-location-dot"></i>Márcio Veículos</h3>
+                    <p>Rua Amazonas, 825 - Garcia</p>
+                    <p>Segunda a sexta, 9h às 18:30h</p>
+                    <p>Sábado, 9h às 13:00h</p>
+                </div>
+                <div class="point">
+                    <h3> <i class="fa-solid fa-location-dot"></i>Vetex</h3>
+                    <p>Rua Iguaçu, 177 - Itoupava Seca.</p>
+                    <p>Segunda a sexta, 9h às 17:00h</p>
+                </div>
+                <div class="point">
+                    <h3> <i class="fa-solid fa-location-dot"></i>PC Express</h3>
+                    <p>Rua Progresso, 3667 - Progresso</p>
+                    <p>Segunda a sexta, 9h às 16:30h</p>
+                    <p>Sábado, 9h às 12:00h</p>
+                </div>
+                <div class="point">
+                    <h3> <i class="fa-solid fa-location-dot"></i>Odair Instaladora Elétrica</h3>
+                    <p>Rua Progresso, 3620 - Progresso</p>
+                    <p>Segunda a sexta, 9h às 16:30h</p>
+                    <p>Sábado, 9h às 12:00h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Galeria de Fotos</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Confira os momentos especiais da Páscoa Solidária e nossos acadêmicos em ação!</p>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="img/FrenteAmiguinhoFeliz.jpeg" alt="Frente Amiguinho Feliz">
+                </div>
+                <div class="photo-item">
+                    <img src="img/HallDeEntradaAmiguinho.jpeg" alt="Hall de Entrada Amiguinho Feliz">
+                </div>
+                <div class="photo-item">
+                    <img src="img/VisitaMarcioeSandraAmuguinho.jpeg" alt="Visita Sandra e Márcio">
+                </div>
+                <div class="photo-item">
+                    <img src="img/VisitaJeffersonAmiguinho.jpeg" alt="Visita Jefferson">
+                </div>
+                <div class="photo-item">
+                    <img src="img/BannerAmuguinhoFeliz.jpeg" alt="Banner Amiguinho Feliz">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h2>Páscoa Solidária 2025</h2>
+                <p>Projeto de Extensão Universitário Centro Leonardo Da Vinci - Uniasselvi.</p>
+                <ul class="social-links">
+                    <li><a href="https://www.instagram.com/pasc_oasolidaria2025?igsh=OTAxdTB5YWJwazM="><i class="fab fa-instagram"></i></a></li>
+                </ul>
+                <p>&copy; 2025 Páscoa Solidária. Todos os direitos @se7eTech.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
