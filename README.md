@@ -1,3 +1,5 @@
+# Projeto de Extensão Páscoa Solidária
+
 A Páscoa Solidária é um projeto de extensão universitária que busca levar apoio a ONG Amiguinho Feliz, localizada no bairro Escola Agrícola. Por meio da arrecadação de alimentos, produtos de higiene, roupas em bom estado, brinquedos para crianças e outros itens essenciais, queremos transformar a Páscoa em um momento de renovação e esperança para quem mais precisa.
 
 Em 2025, contamos com a dedicação de 17 acadêmicos e o apoio fundamental de parceiros da comunidade, unindo forças para fazer a diferença.
